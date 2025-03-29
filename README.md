@@ -6,8 +6,9 @@ Este repositorio solo contiene este markdown con el material de referencia para 
 NO
 * Hacking - acércate a tu sombrero blanco más cercano
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Icon_hacker.png?20180203052812" alt="Sombrero Blanco" width="200"/>
+* **Chequen el curso de seguridad de Kubernetes de Lenin https://github.com/Alevsk/dvka/tree/master/workshop**
 * Cómo escribir código seguro - valida/sanitiza tus entradas y salidas ([CWE-707](https://cwe.mitre.org/data/definitions/707.html)), aprende cripto, usa OAuth2, etc.
-* Linux, Windows, Docker, Kubernetes y todos los otros riesgos de la cadena de suministro donde corre tu código.
+* Linux, Windows, ~~Docker, Kubernetes~~ (de esto si vamos a hablar) y todos los otros riesgos de la cadena de suministro donde corre tu código.
 <img src="https://www.securityweek.com/wp-content/uploads/2024/07/CrowdStrike-Outage-1024x576.jpg" alt="Crowdstrike" width="200"/>
 * Un pitch de ventas de alguna herramienta en específico 
 > *no me pagan lo suficiente*
@@ -51,6 +52,10 @@ graph TD
 * npm ls --all
 * [pip freeze > requirements.txt](https://suyojtamrakar.medium.com/managing-your-requirements-txt-with-pip-tools-in-python-8d07d9dfa464)
 
+### Image lineage de un contenedor
+* docker inspect devt/llm:latest
+  * dive devt/llm:latest https://github.com/wagoodman/dive/blob/main/.data/demo.gif
+
 ## Explotando (muy literal) la cadena de suministro
 El gobierno israelí, infiltró la cadena de suministro de Hezbollah en 2024 en los beeper y posteriormente los walkie talkies de sus miembros.
 - Interceptaron los lotes
@@ -80,6 +85,10 @@ Ejemplo: [xzutils](https://www.openwall.com/lists/oss-security/2024/03/29/4) es 
   - Lo descubre porque ve una perturbación en la fuerza (CPU, errores)
 - Se reporta el backdoor y todo mundo empieza a actualizar masivamente
 
+### Malware en containers? ni que fuera Windows
+- No bajes piratería de Docker... https://thehackernews.com/2024/04/millions-of-malicious-imageless.html
+- Cryprtojacking cuando descargas el openjdk *DEL REPOSITORIO NO OFICIAL* https://www.aquasec.com/blog/supply-chain-threats-using-container-images/
+
 #### Caso plyfill.io
 [Polyfill.io](https://www.akamai.com/blog/security/2024-polyfill-supply-chain-attack-what-to-know) es un servicio que provee polyfills para navegadores antiguos.
 - Un grupo de usuarios maliciosos tomó control del proyecto y agrega un payload malicioso en cdn.polyfill.io.
@@ -105,8 +114,14 @@ https://github.com/cncf/tag-security/blob/dca894ee62ce4c37109325a3c381b49071a7d5
 https://github.com/advisories?query=type%3Amalware
 
 ### Explotando vulnerabilidades conocidas (CVE)
-https://nvd.nist.gov/general/nvd-dashboard
-https://www.cvedetails.com/
+* https://nvd.nist.gov/general/nvd-dashboard
+* https://www.cvedetails.com/
+* CVEs oficiales de Kubernetes: https://kubernetes.io/docs/reference/issues-security/official-cve-feed/
+
+**Reto: cuantas chupada de una tutsi pop necesitas para migrar de una versión de Kubernetes a otra**
+* Se liberan 3-4 veces nuevas versiones de Kubernetes en el año: https://kubernetes.io/releases/release/
+* Cada versión puede tener un impacto que va romper funciones de la versión anterior: https://kubernetes.io/docs/reference/using-api/deprecation-guide/
+
 **Todas las aplicaciones tienen una vulneabilidad o la van a tener**
 #### Mito: El código OpenSource NO es más seguro
 *PERO* hay más ojos revisando el código y todos lo usamos 
@@ -124,10 +139,16 @@ https://www.mandiant.com/sites/default/files/2021-09/rpt-java-vulnerabilities.pd
 
 Hay muchas condiciones que se deben cumplir para explotar una vulnerabilidad en una dependencia.
 1. Tener la versión vulnerable al momento de ejecución
-2. Que tu código acceda de forma directa (DIRECT DEPENDENCY) o indirecta (TRANSITIVE DEPENDENCY) a la vulnerabilidad
-3. Que la vulnerabilidad sea explotable en el contexto de la ejecución de tu código Ó 
+2. Que tu código o sistema acceda de forma directa (DIRECT DEPENDENCY) o indirecta (TRANSITIVE DEPENDENCY) a la vulnerabilidad
+3. Que la vulnerabilidad sea explotable en el contexto de la ejecución de tu código Ó
     1. que la biblioteca vulnerable puede ser expuesta a una ejecución fuera del contexto de tu código 
     > (p.ej. una Web UI que se levante como parte de un runtime).
+    2. que el sistema tenga abierto un proceso en memoria que carge el código que es vulnerable
+
+## Ejemplo IngressNightmare
+https://www.wiz.io/blog/ingress-nginx-kubernetes-vulnerabilities
+https://www.linkedin.com/posts/alevsk_remote-code-execution-vulnerabilities-in-activity-7310178431462227969-ynrZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAXpMm0BL3lpU69yWsRGuifySJe7GGZfacg
+
 
 ## Ejemplo: Spring4Shell
 https://github.com/denniskniep/Spring4Shell-vulnerable-app/blob/master/src/main/java/com/reznok/helloworld/HelloController.java
@@ -150,16 +171,24 @@ https://cycode.com/blog/github-actions-vulnerabilities/
 Los GitHub Actions son de código abierto, pero no hay garantía de lo que van a hacer o si pueden descargar payload maliciosos durante su ejecución.
 
 ## Cómo prevenir riesgos a la cadena de suministro
+
+## En el mundo de containers
+[Guía de software supply chain de Docker](https://www.docker.com/blog/software-supply-chain-art-of-continuous-improvement/)
+
 Tú código es inseguro ACEPTALO
+Tus containers, kubelets y código va a tener vulnerabilidades SIEMPRE
+
 Pero, no todo está perdido...
 ### No usar dependencias
 La mejor manera de no tener vulnerabilidades es no tener código ajeno.
 Si puedes confiar en que puedes hacer un mejor trabajo que los demás contribuidores del mundo, adelante.
 Esto parece es lo que busca go con su filosofía de "baterias no  incluidas".
+Si tu construyes tus propias imágenes de contenedores, sabes el lineage de tus imágenes.
 
 ### Análisis de dependencias (Software Composition Analysis)
 El análisis de dependencias es una técnica que te permite saber qué dependencias estás utilizando, qué versiones son y si tienen vulnerabilidades conocidas.
 Existen multiples herramientas que hacen el análisis de forma automágica:
+* [Trivy](https://aquasecurity.github.io/trivy/v0.55/docs/target/sbom/) <- **USEN ESTE O CLAIR!!!!**
 * [Snyk](https://snyk.io/)
 * [Nexus Sonatype](https://oss.sonatype.org/)
 * [JFrog Xray](https://jfrog.com/xray/)
@@ -170,7 +199,6 @@ Existen multiples herramientas que hacen el análisis de forma automágica:
 * Gitlab Dependency Scanning
 * [Github Dependency Graph/Dependabot](https://github.com/dependabot), [dependencias soportadas](https://docs.github.com/es/code-security/dependabot/ecosystems-supported-by-dependabot/supported-ecosystems-and-repositories)
 * [Semgrep](https://semgrep.dev/docs/semgrep-supply-chain/getting-started)
-* [Trivy](https://aquasecurity.github.io/trivy/v0.55/docs/target/sbom/)
 
 Para hacer este análisis se necesita un archivo con las versiones "congeladas" de las mismas (a.k.a. lockfile) y una base de datos con vulnerabilidades.
 
