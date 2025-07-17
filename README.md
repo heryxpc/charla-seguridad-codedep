@@ -8,7 +8,7 @@ NO
 * Cómo escribir código seguro - aprender a programar (**sin AI**), valida/sanitiza tus entradas y salidas ([CWE-707](https://cwe.mitre.org/data/definitions/707.html)), aprende cripto-GRAFÍA, usa OAuth2/SAML/PASSKEY, etc.
 * ~~Linux, Windows, Docker, Kubernetes y todos los otros riesgos de la cadena de suministro donde corre tu código.~~
 <img src="https://www.securityweek.com/wp-content/uploads/2024/07/CrowdStrike-Outage-1024x576.jpg" alt="Crowdstrike" width="400"/>
-    * _Ahora si vamos a hablar de esas otras dependencias_
+    * __Ahora si vamos a hablar de esas otras dependencias__
 * Un pitch de ventas de alguna herramienta en específico 
 
 > *no me pagan lo suficiente*
