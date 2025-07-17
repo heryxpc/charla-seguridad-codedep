@@ -6,9 +6,9 @@ Este repositorio solo contiene este markdown con el material de referencia para 
 NO
 * Hacking - acércate a tu sombrero ~~blanco gris~~ (NEGRO NO) ~~azul rojo~~ morado más cercano. <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Icon_hacker.png?20180203052812" alt="Sombrero Blanco" width="150"/>
 * Cómo escribir código seguro - aprender a programar (**sin AI**), valida/sanitiza tus entradas y salidas ([CWE-707](https://cwe.mitre.org/data/definitions/707.html)), aprende cripto-GRAFÍA, usa OAuth2/SAML/PASSKEY, etc.
-* ~~Linux, Windows, Docker, Kubernetes y todos los otros riesgos de la cadena de suministro donde corre tu código.~~
-<img src="https://www.securityweek.com/wp-content/uploads/2024/07/CrowdStrike-Outage-1024x576.jpg" alt="Crowdstrike" width="400"/>
-  * Ahora si vamos a hablar de esas otras dependencias
+* ~~Linux, Windows, Docker, Kubernetes y todos los otros riesgos de la cadena de suministro donde corre tu código.~~  
+  <img src="https://www.securityweek.com/wp-content/uploads/2024/07/CrowdStrike-Outage-1024x576.jpg" alt="Crowdstrike" width="400"/>
+    * Ahora sí vamos a hablar de esas otras dependencias
 * Un pitch de ventas de alguna herramienta en específico 
 
 > *no me pagan lo suficiente*
