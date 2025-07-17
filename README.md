@@ -4,13 +4,13 @@ Este repositorio solo contiene este markdown con el material de referencia para 
 ## De qué va a tratar y no va a tratar esta charla
 
 NO
-* Hacking - acércate a tu sombrero ~~blanco gris~~ (NEGRO NO) ~~azul rojo~~ morado más cercano
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Icon_hacker.png?20180203052812" alt="Sombrero Blanco" width="150"/>
+* Hacking - acércate a tu sombrero ~~blanco gris~~ (NEGRO NO) ~~azul rojo~~ morado más cercano. <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Icon_hacker.png?20180203052812" alt="Sombrero Blanco" width="150"/>
 * Cómo escribir código seguro - aprender a programar (**sin AI**), valida/sanitiza tus entradas y salidas ([CWE-707](https://cwe.mitre.org/data/definitions/707.html)), aprende cripto-GRAFÍA, usa OAuth2/SAML/PASSKEY, etc.
 * ~~Linux, Windows, Docker, Kubernetes y todos los otros riesgos de la cadena de suministro donde corre tu código.~~
 <img src="https://www.securityweek.com/wp-content/uploads/2024/07/CrowdStrike-Outage-1024x576.jpg" alt="Crowdstrike" width="400"/>
     * _Ahora si vamos a hablar de esas otras dependencias_
 * Un pitch de ventas de alguna herramienta en específico 
+
 > *no me pagan lo suficiente*
 
 
@@ -203,7 +203,7 @@ O, cuando [hackean a tu proovedor de seguridad](https://www.nightfall.ai/blog/he
 ### La IA es insegura
 Pero bien bien bien insegura...y es lo que ya todos vamos a usar para crear más software en lo que _El Arquitecto_ termina la Matrix.
 
-<img src="https://media.pinatafarm.com/protected/B183D0EF-49B8-47BF-A523-E72FD0CFFAAC/6ca660f3-52e8-409b-b5de-b010ffec2d02-1663825447318-pfarm.webp" alt="Red Pill Blue Pill Meme" width="400"/>
+<img src="https://eu-central.storage.cloudconvert.com/tasks/8a690479-02fb-4156-ae4d-c179c092e4b6/6ca660f3-52e8-409b-b5de-b010ffec2d02-1663825447318-pfarm.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20250717%2Ffra%2Fs3%2Faws4_request&X-Amz-Date=20250717T231725Z&X-Amz-Expires=86400&X-Amz-Signature=b19a6a1956b99cdc26a148ee0491d034f67e151fd837cab2ec885663b27e6db6&X-Amz-SignedHeaders=host&response-content-disposition=inline%3B%20filename%3D%226ca660f3-52e8-409b-b5de-b010ffec2d02-1663825447318-pfarm.png%22&response-content-type=image%2Fpng&x-id=GetObject" alt="Red Pill Blue Pill Meme" width="400"/>
 
 
 | IA | Cómo se usa | Riesgo | Ejemplo |
